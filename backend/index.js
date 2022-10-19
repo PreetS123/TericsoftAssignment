@@ -4,6 +4,7 @@ const bcrypt=require('bcrypt');
 const authController = require('./routes/auth.route');
 const connection = require('./configs/db');
 const authentication = require('./middlewares/Authentication');
+const bmiController = require('./routes/bmi.routes');
 require('dotenv').config();
 
 const app= express();
@@ -18,10 +19,7 @@ app.use(express.urlencoded({extended:true}));
 
   app.use('/auth',authController);
   app.use(authentication);
-
-  app.get('/user',(req,res)=>{
-    res.send('user with token')
-  })
+  app.use('/user',bmiController)
 
 
  app.listen(8080,async()=>{
