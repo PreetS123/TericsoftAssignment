@@ -13,6 +13,8 @@ export const BMIPage = () => {
   const [bmi, setBmi] = useState("");
   const [bmiHistory, setBmiHistory] = useState([]);
   
+  let token= localStorage.getItem('token');
+  
   const handleSubmit = async (e) => {
       e.preventDefault();
       setLoading(true);
