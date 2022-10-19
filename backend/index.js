@@ -18,7 +18,11 @@ app.use(express.urlencoded({extended:true}));
 
   app.use('/auth',authController);
   app.use(authentication);
-  
+
+  app.get('/user',(req,res)=>{
+    res.send('user with token')
+  })
+
 
  app.listen(8080,async()=>{
     try{

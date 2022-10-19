@@ -23,7 +23,7 @@ authController.post('/register',(req,res)=>{
 
 
 authController.post('/login',async(req,res)=>{
-    const {email,password}= req.body;
+    const {name,email,password}= req.body;
     const auth= await AuthModel.findOne({email});
     if(!auth){
         return res.send('Invalid Credentials');
@@ -32,7 +32,7 @@ authController.post('/login',async(req,res)=>{
   const authId= auth._id;
   bcrypt.compare(password,hash,function(err,result){
     if(result){
-        let token= jwt.sign({email,authId},'secret');
+        let token= jwt.sign({name,email,authId},'secret');
         return res.send({'message':'LOGIN SUCCESSFULL','token':token});
     }
     else{
