@@ -26,7 +26,7 @@ import {
           password
       }
       // console.log(payload)
-      await fetch('http://localhost:8000/auth/login',{
+      await fetch('http://localhost:8080/auth/login',{
            method:'POST',
            body:JSON.stringify(payload),
            headers:{
@@ -45,6 +45,7 @@ import {
       .catch(e=>console.log(e))
      
     }
+
     return (
       <Flex
         minH={'100vh'}
