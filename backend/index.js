@@ -3,6 +3,7 @@ const cors= require('cors');
 const bcrypt=require('bcrypt');
 const authController = require('./routes/auth.route');
 const connection = require('./configs/db');
+const authentication = require('./middlewares/Authentication');
 require('dotenv').config();
 
 const app= express();
@@ -16,6 +17,8 @@ app.use(express.urlencoded({extended:true}));
   })
 
   app.use('/auth',authController);
+  app.use(authentication);
+  
 
  app.listen(8080,async()=>{
     try{
